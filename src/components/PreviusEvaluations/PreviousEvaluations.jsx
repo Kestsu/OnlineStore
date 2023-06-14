@@ -5,7 +5,7 @@ class PreviousEvaluations extends Component {
   render() {
     const { evaluations } = this.props;
     return (
-      <div>
+      <div style={ { display: 'flex', flexDirection: 'column', marginBottom: '100px' } }>
         {
           evaluations.map(({ email, rating, message }) => (
             <div key={ email }>

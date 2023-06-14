@@ -5,8 +5,8 @@ import {
   removeAllProduct,
   removeProduct,
   saveProduct,
-} from '../services/storageCart';
-import './StyleSheet/ShoppingCart.css';
+} from '../../services/storageCart';
+import '../StyleSheet/ShoppingCart.css';
 
 class ShoopingCart extends React.Component {
   state = {
@@ -97,78 +97,87 @@ class ShoopingCart extends React.Component {
   render() {
     const { hasItems, produtos, filteredProducts, totalPrice } = this.state;
     return (
-      <div>
+      <div className="container-details">
         <nav className="container-cartNavigation">
+          <h1>OnlineStore</h1>
           <Link className="link-home" to="/">{'< Home'}</Link>
         </nav>
-        {
-          hasItems ? (
-            <section className="main-cart-container">
-              <h2>Carrinho de compras</h2>
-              <article className="container-cart-products">
-                {
-                  filteredProducts.map(({ title, price, thumbnail, id }) => (
-                    <div className="container-cartProduct" key={ id }>
-                      <div className="container-cartImage">
-                        <button
-                          type="button"
-                          name={ id }
-                          onClick={ this.deleteProduct }
-                        >
-                          X
-                        </button>
-                        <img src={ thumbnail } alt={ thumbnail } />
-                        <h3 data-testid="shopping-cart-product-name">{ title }</h3>
+        <div className="container-carrinho">
+          <h1>Carrinho de compras</h1>
+
+          {
+            hasItems ? (
+              <section className="main-cart-container">
+                <article className="container-cart-products">
+                  {
+                    filteredProducts.map(({ title, price, thumbnail, id }) => (
+                      <div className="container-cartProduct" key={ id }>
+                        <div className="container-cartImage">
+                          <h3 data-testid="shopping-cart-product-name">{ title }</h3>
+                          <div>
+
+                            <button
+                              className="btn-delete"
+                              type="button"
+                              name={ id }
+                              onClick={ this.deleteProduct }
+                            >
+                              X
+                            </button>
+                            <img src={ thumbnail } alt={ thumbnail } />
+                            <div className="container-quantityControl">
+                              <button
+                                type="button"
+                                data-testid="product-decrease-quantity"
+                                name={ id }
+                                onClick={ this.decreaseQuantity }
+                              >
+                                -
+                              </button>
+                              <span
+                                data-testid="shopping-cart-product-quantity"
+                              >
+                                {
+                                  produtos
+                                    .filter(({
+                                      id: idProduto }) => idProduto === id).length
+                                }
+                              </span>
+                              <button
+                                type="button"
+                                data-testid="product-increase-quantity"
+                                name={ id }
+                                onClick={ this.increaseQuantity }
+                              >
+                                +
+                              </button>
+                            </div>
+                            <span>{ `R$ ${price.toFixed(2)}` }</span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="container-quantityControl">
-                        <button
-                          type="button"
-                          data-testid="product-decrease-quantity"
-                          name={ id }
-                          onClick={ this.decreaseQuantity }
-                        >
-                          -
-                        </button>
-                        <span
-                          data-testid="shopping-cart-product-quantity"
-                        >
-                          {
-                            produtos
-                              .filter(({ id: idProduto }) => idProduto === id).length
-                          }
-                        </span>
-                        <button
-                          type="button"
-                          data-testid="product-increase-quantity"
-                          name={ id }
-                          onClick={ this.increaseQuantity }
-                        >
-                          +
-                        </button>
-                      </div>
-                      <span>{ `R$ ${price.toFixed(2)}` }</span>
-                    </div>
-                  ))
-                }
-              </article>
-              <p>{ `Valor total da Compra R$ ${totalPrice.toFixed(2)}` }</p>
-              <Link
-                to="/checkout"
-                data-testid="checkout-products"
-                className="checkout-link"
+                    ))
+                  }
+                </article>
+                <p>{ `Valor total da Compra R$ ${totalPrice.toFixed(2)}` }</p>
+                <Link
+                  to="/checkout"
+                  data-testid="checkout-products"
+                  className="checkout-link"
+                >
+                  Finalizar Compra
+                </Link>
+              </section>
+            ) : (
+              <h1
+                data-testid="shopping-cart-empty-message"
+                className="empty-cart"
               >
-                Finalizar Compra
-              </Link>
-            </section>
-          ) : (
-            <h1
-              data-testid="shopping-cart-empty-message"
-              className="empty-cart"
-            >
-              Seu carrinho está vazio
-            </h1>
-          )
-        }
+                Seu carrinho está vazio
+              </h1>
+            )
+          }
+        </div>
       </div>
     );
   }

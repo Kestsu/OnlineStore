@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getProductsFromCategoryAndQuery } from '../services/api';
-import Card from '../components/Card';
-import Categories from '../components/Categories';
-import './StyleSheet/Search.css';
-import { readSavedProducts } from '../services/storageCart';
+import { categoriaSearch, termo } from '../../services/api';
+import Card from '../../components/Card/Card';
+import Categories from '../../components/Categories/Categories';
+import '../StyleSheet/Search.css';
+import { readSavedProducts } from '../../services/storageCart';
+// import ListProducts from '../../components/ListProducts/ListProducts';
 
 class Search extends React.Component {
   state = {
     isLoading: false,
-    inputValue: '',
+    inputValue: 'acessorios',
     produtos: [],
     totalCarrinho: 0,
     typePrice: 'Recente',
@@ -20,6 +21,7 @@ class Search extends React.Component {
   // Altera a quantidade que aparece do lado do carrinho quando abrir a pagina
   componentDidMount() {
     this.handleAmount();
+    this.handleClick();
   }
 
   // Altera a quantidade que aparece do lado do carrinho
@@ -41,21 +43,27 @@ handleCategory = (event) => {
   const ideia = event.target.id;
   this.setState({
     categoria: ideia,
-  }, () => { this.handleClick(); });
+  }, () => { this.handleClick('naoQuery'); });
 }
 
   // Realiza pesquisa a partir do campo de pesquisa e categorias
-  handleClick = () => {
+  handleClick = (type) => {
     const { inputValue, categoria } = this.state;
     this.setState({ isLoading: true }, async () => {
-      if (inputValue.length !== 0 || categoria.length !== 0) {
-        const APIResponse = await getProductsFromCategoryAndQuery(
+      if (type === 'naoQuery' && inputValue.length !== 0) {
+        const APIResponse = await categoriaSearch(
           categoria,
+        );
+        const response = APIResponse.results;
+        this.handlePrint(response);
+      } else {
+        const APIResponse = await termo(
           inputValue,
         );
         const response = APIResponse.results;
         this.handlePrint(response);
       }
+
       this.setState({ isLoading: false });
     });
   };
@@ -101,20 +109,22 @@ render() {
   const { inputValue, produtos, totalCarrinho, typePrice, isLoading } = this.state;
   return (
     <div className="main-container">
-      <Categories handleApertar={ this.handleCategory } />
-      <section className="content-container">
-        {/* CAMPO DE PESQUISA E BOTÃO */}
+      <header className="header-container">
+        <h1>OnlineStore</h1>
         <div className="search-container">
           <div className="control-search">
             <input
               type="text"
               data-testid="query-input"
+              className="input-search"
               name="inputValue"
               value={ inputValue }
               onChange={ this.handleChange }
             />
+
             <button
               data-testid="query-button"
+              className="btn-search"
               onClick={ this.handleClick }
               type="button"
             >
@@ -128,17 +138,17 @@ render() {
             className="link-cart"
           >
             <span>Carrinho de compras</span>
-            {/* LOCAS DO CONTADOR DE ITEMS NO CARRINHO */}
             <span data-testid="shopping-cart-size">{ `${totalCarrinho} >` }</span>
           </Link>
         </div>
+      </header>
+      <section className="home-section">
+        {/* CAMPO DE PESQUISA E BOTÃO */}
         {/* LISTAGEM DE PRODUTOS */}
+        <Categories handleApertar={ this.handleCategory } />
         <article className="product-conteiner">
-          <p className="initial-message" data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-          {/* Ordenar os valores    */}
           <select
+            className="select-options"
             name="typePrice"
             value={ typePrice }
             onChange={ this.handlePrice }
@@ -161,7 +171,9 @@ render() {
                     handleAmount={ this.handleAmount }
                     freeShipping={ itens.shipping.free_shipping }
                   />
-                )))
+                ))
+                // <ListProducts produtos={ produtos } />
+              )
             }
           </div>
         </article>

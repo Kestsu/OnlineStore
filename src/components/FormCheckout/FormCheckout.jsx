@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './StyleSheet/FormCheckout.css';
+import '../StyleSheet/FormCheckout.css';
 
 class FormCheckout extends React.Component {
   render() {

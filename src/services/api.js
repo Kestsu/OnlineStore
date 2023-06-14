@@ -6,21 +6,21 @@ export async function getCategories() {
   return requestJson;
 }
 
-const categoria = async (palavra) => {
+export const categoriaSearch = async (palavra) => {
   const categorias = await
   fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${palavra}`);
   const categoriaJson = await categorias.json();
   return categoriaJson;
 };
 
-const termo = async (b) => {
+export const termo = async (b) => {
   const termos = await
   fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${b}`);
   const termoJson = await termos.json();
   return termoJson;
 };
 
-const categoryTermo = async (a, b) => {
+export const categoryTermo = async (a, b) => {
   const api = await
   fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${a}&q=${b}`);
   const fetchTudo = await api.json();
@@ -37,7 +37,7 @@ const detalhes = async (a) => {
 export async function getProductsFromCategoryAndQuery(categoryId, query) {
   // Implemente aqui! Quando o fizer, descomente os parâmetros que essa função recebe
   if (query === undefined) {
-    const category = await categoria(categoryId);
+    const category = await categoriaSearch(categoryId);
     return category;
   }
   if (categoryId === undefined) {

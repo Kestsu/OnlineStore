@@ -1,48 +1,83 @@
-.product-container, .product {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+.card {
+    position: relative;
+    width: 11.875em;
+    height: 19.5em;
+    box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 120ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 0.5em;
+    padding-bottom: 3.4em;
+    margin-top: 30px;
+  }
+  
+  .card::after {
+    content: "Add to Cart";
+    padding-top: 1.25em;
+    padding-left: 1.25em;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    background: rgba(127,188,66,255);
+    color: #fff;
+    height: 2.5em;
+    width: 90%;
+    transition: all 80ms;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0;
+  }
+  
+  .card .title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 1.875em;
+    font-weight: 400;
+    color: #000;
+    /* margin-bottom: 10px; */
+  }
+  
+  .card .price {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 0.625em;
+    color: #000;
+  }
+  
+  .card:hover::after {
+    bottom: 0;
+    opacity: 1;
+  }
+  
+  .card:active {
+    transform: scale(0.98);
+  }
+  
+  .card:active::after {
+    content: "Added !";
+    height: 3.125em;
+  }
+  
+  .text {
+    max-width: 55px;
+  }
+  
+  .image {
+    background: rgb(241, 241, 241);
+    width: 180px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
 
-.product-container {
-  border: 1px solid black;
-  border-radius: 15px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-  height: 440px;
-  margin: 10px;
-  padding: 10px;
-  width: 290px;
-}
-
-.product-container button {
-  align-self: center;
-  background-color: rgb(70, 104, 206);
-  border: none;
-  border-radius: 5px;
-  color: white;
-  padding: 8px 0;
-  width: 160px;
-}
-
-.product-container button:hover {
-  background-color: rgb(58, 87, 173);
-  cursor: pointer;
-}
-
-.product {
-  align-items: center;
-  color: black;
-  height: 400px;
-  text-decoration: none;
-}
-
-.product img {
-  height: 200px;
-  width: 200px;
-}
-
-.product p {
-  align-self: flex-start;
-  font-size: 20px;
-  font-weight: 600;
-}
+  .product{
+    text-decoration: none;
+    /* background-color: #000; */
+  }

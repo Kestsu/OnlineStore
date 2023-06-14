@@ -1,10 +1,34 @@
-.categories-container {
-  border: 2px solid black;
+.sidebar {
+  width: 350px;
+  background-color: rgba(244, 245, 244, 255);
+  /* overflow-y: scroll;
+  height: 90ex; */
   display: flex;
   flex-direction: column;
-  font-size: 14px;
-  height: max-content;
-  margin: 15px;
-  padding: 10px;
-  width: 245px;
+  margin-left: 100px;
+}
+
+/* ::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+} */
+
+/* .sidebar h3 {
+  font-size: 20px;
+  margin-left: 4px;
+} */
+
+.sidebar ul {
+  padding: 5px;
+  font-size: 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar ul li {
+  margin: 5px;
 }

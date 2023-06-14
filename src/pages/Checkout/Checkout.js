@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FormCheckout from '../components/FormCheckout';
-import { readSavedProducts } from '../services/storageCart';
-import './StyleSheet/Checkout.css';
+import FormCheckout from '../../components/FormCheckout/FormCheckout';
+import { readSavedProducts } from '../../services/storageCart';
+import '../StyleSheet/Checkout.css';
 
 class Checkout extends React.Component {
   state = {

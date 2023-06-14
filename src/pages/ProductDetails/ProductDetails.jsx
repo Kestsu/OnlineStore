@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './StyleSheet/ProductDetails.css';
+import '../StyleSheet/ProductDetails.css';
 import { Link } from 'react-router-dom';
-import { saveProduct, readSavedProducts } from '../services/storageCart';
-import EvaluationForm from '../components/EvaluationForm';
+import { saveProduct, readSavedProducts } from '../../services/storageCart';
+import EvaluationForm from '../../components/Evaluationform/EvaluationForm';
 
 class ProductDetails extends React.Component {
   state = {
@@ -66,20 +66,16 @@ class ProductDetails extends React.Component {
       <section className="container-product">
         {/* LINKS DE NAVEGAÇÃO */}
         <nav className="container-nav">
-          <Link to="/" className="link-home">{'< Home'}</Link>
-          <div>
-            <Link
-              to="/carrinho"
-              data-testid="shopping-cart-button"
-              // CLASSE ESTILIZADA NO SEARCH.CSS
-              className="link-cart"
-            >
+          <h1>OnlineStore</h1>
+          <div className="container-sub">
+            <Link to="/" className="link-home">{'< Home'}</Link>
+            <Link to="/carrinho" data-testid="shopping-cart-button" className="link-cart">
               <span>Carrinho de compras</span>
-              {/* LOCAL DO CONTADOR DE ITEMS NO CARRINHO */}
-              <span data-testid="shopping-cart-size">{ `${totalCarrinho} >` }</span>
+              <span data-testid="shopping-cart-size">{`${totalCarrinho} >`}</span>
             </Link>
           </div>
         </nav>
+        <div className="espaco" />
         {/* DETALHES DO PRODUTO */}
         <section className="container-info-product">
           <div className="container-image">
@@ -103,34 +99,41 @@ class ProductDetails extends React.Component {
           </div>
         </section>
         <section className="container-evaluation">
-          <h1>Avaliações</h1>
-          <EvaluationForm />
-          {
-            totalPrice ? (
-              <div className="add-carrinho">
-                <p className="discount">{ `De: R$ ${totalPrice}` }</p>
-                <p>{ `Por: R$ ${price}` }</p>
-                <button
-                  data-testid="product-detail-add-to-cart"
-                  type="button"
-                  onClick={ this.handleClick }
-                >
-                  Adicionar ao carrinho
-                </button>
-              </div>
-            ) : (
-              <div className="add-carrinho">
-                <p>{ `Por: R$ ${price}` }</p>
-                <button
-                  data-testid="product-detail-add-to-cart"
-                  type="button"
-                  onClick={ this.handleClick }
-                >
-                  Adicionar ao carrinho
-                </button>
-              </div>
-            )
-          }
+          <div>
+            <form>
+              <h1>Avaliações</h1>
+              <EvaluationForm />
+            </form>
+            <div>
+
+              {
+                totalPrice ? (
+                  <div className="add-carrinho">
+                    <p className="discount">{ `De: R$ ${totalPrice}` }</p>
+                    <p>{ `Por: R$ ${price}` }</p>
+                    <button
+                      data-testid="product-detail-add-to-cart"
+                      type="button"
+                      onClick={ this.handleClick }
+                    >
+                      Adicionar ao carrinho
+                    </button>
+                  </div>
+                ) : (
+                  <div className="add-carrinho">
+                    <p>{ `Por: R$ ${price}` }</p>
+                    <button
+                      data-testid="product-detail-add-to-cart"
+                      type="button"
+                      onClick={ this.handleClick }
+                    >
+                      Adicionar ao carrinho
+                    </button>
+                  </div>
+                )
+              }
+            </div>
+          </div>
         </section>
 
       </section>

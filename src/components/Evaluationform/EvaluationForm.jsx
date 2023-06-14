@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { readSavedEvaluations, saveEvaluation } from './storageEvaluation';
-import PreviousEvaluations from './PreviousEvaluations';
+import {
+  readSavedEvaluations, saveEvaluation } from '../storageEvaluation/storageEvaluation';
+import PreviousEvaluations from '../PreviusEvaluations/PreviousEvaluations';
 
 class EvaluationForm extends Component {
   state = {
@@ -43,7 +44,7 @@ class EvaluationForm extends Component {
     const { evaluations, email, message } = this.state;
     const ratingStars = ['1', '2', '3', '4', '5'];
     return (
-      <div>
+      <div className="avaliacao" style={ { display: 'flex', flexDirection: 'column' } }>
         <input
           type="email"
           name="email"
@@ -53,19 +54,21 @@ class EvaluationForm extends Component {
           placeholder="Email"
           onChange={ this.handleChange }
         />
-        {ratingStars.map((value, index) => (
-          <i
-            key={ value }
-            data-testid={ `${value}-rating` }
-            id={ value }
-            onClick={ this.handleClick }
-            onKeyPress={ () => {} }
-            role="link"
-            tabIndex={ index }
-          >
-            &#x02606;
-          </i>
-        ))}
+        <div>
+          {ratingStars.map((value, index) => (
+            <i
+              key={ value }
+              data-testid={ `${value}-rating` }
+              id={ value }
+              onClick={ this.handleClick }
+              onKeyPress={ () => {} }
+              role="link"
+              tabIndex={ index }
+            >
+              &#x02606;
+            </i>
+          ))}
+        </div>
         <input
           type="text"
           name="message"
@@ -82,7 +85,6 @@ class EvaluationForm extends Component {
         >
           Avaliar
         </button>
-
         <PreviousEvaluations evaluations={ evaluations } />
       </div>
     );

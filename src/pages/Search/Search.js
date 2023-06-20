@@ -124,7 +124,7 @@ render() {
 
             <button
               data-testid="query-button"
-              className="btn-search"
+              className="botao-search"
               onClick={ this.handleClick }
               type="button"
             >
@@ -159,21 +159,36 @@ render() {
           </select>
           <div className="product-list">
             {
-              isLoading ? <h1>Carregando...</h1> : (
-                produtos.map((itens) => (
-                  <Card
-                    id={ itens.id }
-                    key={ itens.id }
-                    price={ itens.price }
-                    title={ itens.title }
-                    thumbnail={ itens.thumbnail }
-                    produto={ itens }
-                    handleAmount={ this.handleAmount }
-                    freeShipping={ itens.shipping.free_shipping }
-                  />
-                ))
+              isLoading
+                ? (
+                  <div
+                    style={ {
+                      width: '1000px',
+                      height: '500px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center' } }
+                  >
+                    <svg className="custom-svg" viewBox="25 25 50 50">
+                      <circle className="custom-circle" r="20" cy="50" cx="50" />
+                    </svg>
+                  </div>
+                )
+                : (
+                  produtos.map((itens) => (
+                    <Card
+                      id={ itens.id }
+                      key={ itens.id }
+                      price={ itens.price }
+                      title={ itens.title }
+                      thumbnail={ itens.thumbnail }
+                      produto={ itens }
+                      handleAmount={ this.handleAmount }
+                      freeShipping={ itens.shipping.free_shipping }
+                    />
+                  ))
                 // <ListProducts produtos={ produtos } />
-              )
+                )
             }
           </div>
         </article>

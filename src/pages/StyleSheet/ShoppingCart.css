@@ -94,7 +94,7 @@
   overflow-y: auto;
   background-color: rgba(244, 245, 244, 1);
   border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 1);
 }
 
 
@@ -120,6 +120,15 @@
 
 .container-cart-products {
   width: 100%;
+}
+
+.container-cart-products thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(244, 245, 244, 1);
+  height: 10px;
+  border-bottom: 3px solid #eee;
 }
 
 .qty {
@@ -166,10 +175,6 @@ table {
   border-collapse: collapse;
 }
 
-
-thead tr {
-  border-bottom: 3px solid #eee;
-}
 thead tr th {
   text-align: left;
   padding-bottom: 10px;
@@ -186,7 +191,6 @@ tbody tr td {
 
 
 .container-carrinho {
-  background: #fff;
   padding: 0 30px 30px;
 }
 

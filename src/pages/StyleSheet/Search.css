@@ -11,8 +11,8 @@
     padding: 10px;
     display: flex;
     flex-direction: row;
-    background-color: rgba(254,255,254,255);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: #34502b;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 1);
     z-index: 2;
     height: 81px;
 }
@@ -49,17 +49,17 @@
     height: 40px;
     padding: 8px;
     border-radius: 5px;
-    border: 2.5px solid #E0E1E4;
+    border: 2.5px solid #7b9971;
     box-shadow: 0px 0px 20px -20px;
     cursor: pointer;
-    background-color: white;
+    background-color: #7b9971;
     transition: all 0.2s ease-in-out 0ms;
     user-select: none;
     font-family: 'Poppins', sans-serif;
   }
   
   .botao-search:hover {
-    background-color: #F2F2F2;
+    background-color: #307d24;
     box-shadow: 0px 0px 20px -18px;
   }
   
@@ -73,7 +73,7 @@
 .link-cart {
     display: inline-block;
     padding: 25px 15px;
-    background-color: #f2f2f2;
+    background-color: #7b9971;
     color: #333;
     text-decoration: none;
     border-radius: 5px;
@@ -81,11 +81,11 @@
   }
   
   .link-cart:hover {
-    background-color: #ddd;
+    background-color: #307d24;
   }
   
   .link-cart:active {
-    background-color: #bbb;
+    background-color: #307d24;
   }
   
   /* Estilizando o texto do carrinho de compras */

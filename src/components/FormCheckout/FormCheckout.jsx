@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import '../StyleSheet/FormCheckout.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "../StyleSheet/FormCheckout.css";
 
 class FormCheckout extends React.Component {
   render() {
@@ -12,8 +12,8 @@ class FormCheckout extends React.Component {
           placeholder="Nome Completo"
           type="text"
           name="nome"
-          value={ userInfo.nome }
-          onChange={ handleChange }
+          value={userInfo.nome}
+          onChange={handleChange}
         />
 
         <input
@@ -21,8 +21,8 @@ class FormCheckout extends React.Component {
           placeholder="CPF"
           type="text"
           name="cpf"
-          value={ userInfo.cpf }
-          onChange={ handleChange }
+          value={userInfo.cpf}
+          onChange={handleChange}
         />
 
         <input
@@ -30,8 +30,8 @@ class FormCheckout extends React.Component {
           placeholder="E-mail"
           type="email"
           name="email"
-          value={ userInfo.email }
-          onChange={ handleChange }
+          value={userInfo.email}
+          onChange={handleChange}
         />
 
         <input
@@ -39,8 +39,8 @@ class FormCheckout extends React.Component {
           placeholder="Telefone"
           type="text"
           name="tel"
-          value={ userInfo.tel }
-          onChange={ handleChange }
+          value={userInfo.tel}
+          onChange={handleChange}
         />
 
         <input
@@ -48,8 +48,8 @@ class FormCheckout extends React.Component {
           placeholder="CEP"
           type="text"
           name="cep"
-          value={ userInfo.cep }
-          onChange={ handleChange }
+          value={userInfo.cep}
+          onChange={handleChange}
         />
 
         <input
@@ -57,35 +57,64 @@ class FormCheckout extends React.Component {
           placeholder="Endereço"
           type="text"
           name="endereco"
-          value={ userInfo.endereco }
-          onChange={ handleChange }
+          value={userInfo.endereco}
+          onChange={handleChange}
         />
 
         <input
           placeholder="Complemento"
           type="text"
           name="complemento"
-          value={ userInfo.complemento }
-          onChange={ handleChange }
+          value={userInfo.complemento}
+          onChange={handleChange}
         />
 
         <input
           placeholder="Número"
           type="text"
           name="numero"
-          value={ userInfo.numero }
-          onChange={ handleChange }
+          value={userInfo.numero}
+          onChange={handleChange}
         />
 
         <input
           placeholder="Cidade"
           type="text"
           name="cidade"
-          value={ userInfo.cidade }
-          onChange={ handleChange }
+          value={userInfo.cidade}
+          onChange={handleChange}
         />
-        <select>
-          <option>Estado</option>
+        <select id="estado" name="estado">
+          <option value="" selected disabled>
+            Estado
+          </option>
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
         </select>
       </div>
     );

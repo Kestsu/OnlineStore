@@ -7,11 +7,15 @@ import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Checkout from './pages/Checkout/Checkout';
 import LoginPage from './pages/LoginPage/LoginPage';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import Register from './pages/Register/Register';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/login" component={ LoginPage } />
+        <Route path="/forgot-pass" component={ ForgotPassword } />
+        <Route path="/register" component={ Register } />
         <Route exact path="/" component={ Search } />
         <Route
           path="/produto/:id"
@@ -19,8 +23,6 @@ function App() {
         />
         <Route path="/carrinho" component={ ShoopingCart } />
         <Route path="/checkout" component={ Checkout } />
-        <Route path="/login" component={ LoginPage } />
-        <Route path="/forgot-pass" component={ ForgotPassword } />
       </Switch>
     </BrowserRouter>
   );

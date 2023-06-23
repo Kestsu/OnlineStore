@@ -80,9 +80,9 @@ class ShoopingCart extends React.Component {
   };
 
   // Remove o produto totalmente do carrinho
-  deleteProduct = ({ target: { name: idProduct } }) => {
+  deleteProduct = (event) => {
     const { filteredProducts } = this.state;
-    const productDelete = filteredProducts.find(({ id }) => idProduct === id);
+    const productDelete = filteredProducts.find(({ id }) => event.target.name === id);
     removeAllProduct(productDelete);
     const newProducts = readSavedProducts();
     const totalPrice = this.calculateTotalPrice(newProducts);
@@ -95,6 +95,11 @@ class ShoopingCart extends React.Component {
       filteredProducts: [...newFilteredProducts],
       totalPrice,
     });
+  };
+
+  handleCheckoutClick = () => {
+    const { history } = this.props;
+    history.push('/checkout');
   };
 
   render() {
@@ -127,7 +132,7 @@ class ShoopingCart extends React.Component {
                               justifyContent: "center",
                             }}
                           >
-                            -
+                            {" "}
                           </th>
                         </tr>
                       </thead>
@@ -225,16 +230,9 @@ class ShoopingCart extends React.Component {
                         <span>{`R$ ${totalPrice.toFixed(2)}`}</span>
                       </footer>
                     </div>
-                    <button type="button" className="finalizar-button">
+                    <button type="button" className="finalizar-button" onClick={this.handleCheckoutClick}>
                       <span>
-                        <Link
-                          to="/checkout"
-                          data-testid="checkout-products"
-                          className="checkout-link"
-                          style={{ textDecoration: "none", color: "inherit" }}
-                        >
                           Finalizar Compra
-                        </Link>
                       </span>
                       <div className="custom-top" />
                       <div className="custom-left" />

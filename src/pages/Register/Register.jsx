@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../StyleSheet/LoginPage.css";
+import "../StyleSheet/Register.css";
 
-class LoginPage extends Component {
+class Register extends Component {
   state = {
-    user: '',
-    password: '',
-  }
+    email: "",
+  };
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
   handleClick = () => {
-    const { history } = this.props;
-    history.push("/");
-  }
+    const { email } = this.state;
+    alert(`Nova contra criada com o ${email}`);
+  };
 
   render() {
-    const { user, password } = this.state;
+    const { email } = this.state;
     return (
-      <div className="form-login">
-        <form action="" className="form_main">
-          <p className="heading">Login</p>
-          <div className="inputContainer">
+      <div className="form-login-register">
+        <form action="" className="form_main-register">
+          <p className="heading-register">Cadastro</p>
+          <div className="inputContainer-register">
             <svg
-              className="inputIcon"
+              className="inputIcon-register"
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
@@ -38,17 +37,17 @@ class LoginPage extends Component {
             <input
               type="text"
               onChange={this.handleChange}
-              name="user"
-              className="inputField"
+              name="email"
+              className="inputField-register"
               id="username"
-              value={user}
-              placeholder="Usuário"
+              placeholder="Email"
+              value={email}
             />
           </div>
 
-          <div className="inputContainer">
+          <div className="inputContainer-register">
             <svg
-              className="inputIcon"
+              className="inputIcon-register"
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
@@ -59,25 +58,44 @@ class LoginPage extends Component {
             </svg>
             <input
               type="password"
-              className="inputField"
+              className="inputField-register"
               name="password"
-              value={password}
               id="password"
-              placeholder="Password"
+              placeholder="Digite sua senha"
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputContainer-register">
+            <svg
+              className="inputIcon-register"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#2e2e2e"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+            </svg>
+
+            <input
+              type="password"
+              className="inputField-register"
+              name="password"
+              id="password"
+              placeholder="Digite sua senha novamente"
               onChange={this.handleChange}
             />
           </div>
 
-          <button id="button" onClick={this.handleClick}>Entrar</button>
-          <Link to="/forgot-pass" className="Link-login" href="#">
-          Esqueceu sua senha?
-          </Link>
-          <Link className="Link-login" to="/register">Cadastre-se</Link>
-        </form>
+          <button id="button-register" onClick={this.handleClick}>Cadastrar</button>
 
+          <Link className="Link-login-register" to="/login">
+            Faça Login
+          </Link>
+        </form>
       </div>
     );
   }
 }
 
-export default LoginPage;
+export default Register;

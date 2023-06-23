@@ -18,8 +18,11 @@ Neste projeto foi criado uma loja online, sem persistência no banco de dados. F
 A partir dessas demandas, temos uma aplicação onde os usuários poderão:
 
 Buscar produtos por termos e categorias a partir da API do Mercado Livre;
+<br/>
 Interagir com os produtos buscados de modo a adicioná-los e removê-los de um carrinho de compras em diferentes quantidades;
+<br/>
 Visualizar detalhes e avaliações prévias de um produto, bem como criar novas avaliações;
+<br/>
 E por fim, finalizar a compra (simulada) dos itens selecionados.
 
 
